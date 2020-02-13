@@ -1,0 +1,147 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+    <title>Pinball Leaderboard</title>
+    <link rel="shortcut icon" type='image/png' href="{%  static 'favicon.png' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'site.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato|Righteous&display=swap" rel="stylesheet">
+    </head>
+    <style>
+        body {
+          background-image: url("{%  static 'pinballBcg.jpg' %}");
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+    </style>
+<body>
+
+    <h1>3D Space Cadet Pinball Leaderboard</h1>
+    <div class="leaderboard">
+        <div class="row">
+            <div class="header">
+                Rank
+            </div>
+            <div class="header">
+                Name
+            </div>
+            <div class="header">
+                Score
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                1
+            </div>
+            <div class="entry">
+                <span title={{mName}}>{{n1}}</span>
+            </div>
+            <div class="entry">
+                {{s1}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                2
+            </div>
+            <div class="entry">
+                {{n2}}
+            </div>
+            <div class="entry">
+                {{s2}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                3
+            </div>
+            <div class="entry">
+                {{n3}}
+            </div>
+            <div class="entry">
+                {{s3}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                4
+            </div>
+            <div class="entry">
+                {{n4}}
+            </div>
+            <div class="entry">
+                {{s4}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                5
+            </div>
+            <div class="entry">
+                {{n5}}
+            </div>
+            <div class="entry">
+                {{s5}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                6
+            </div>
+            <div class="entry">
+                {{n6}}
+            </div>
+            <div class="entry">
+                {{s6}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                7
+            </div>
+            <div class="entry">
+                {{n7}}
+            </div>
+            <div class="entry">
+                {{s7}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                8
+            </div>
+            <div class="entry">
+                {{n8}}
+            </div>
+            <div class="entry">
+                {{s8}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                9
+            </div>
+            <div class="entry">
+                {{n9}}
+            </div>
+            <div class="entry">
+                {{s9}}
+            </div>
+        </div>
+        <div class="row">
+            <div class="entry">
+                10
+            </div>
+            <div class="entry">
+                {{n10}}
+            </div>
+            <div class="entry">
+                {{s10}}
+            </div>
+        </div>
+        </div>
+    </div>
+</body>
+</html>

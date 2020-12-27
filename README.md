@@ -1,7 +1,7 @@
 # SpaceCadetPinballLeaderboard
 A Django thing that displays 3D Space Cadet Pinball scores on a leaderboard, with python based client.
 
-Client files in the Client folder, there is one that posts your scores onces and exists and one that posts them every 30 seconds (ideal to be put in a startup folder).
+Client files in the Client folder, there is one that posts your scores onces and exits and one that posts them every 30 seconds (ideal to be put in a startup folder).
 
 Currently runs on port 5050, but can be changed when running the server. Note if you do that you will have the change the port the client posts to in the client python scripts.
 
@@ -9,7 +9,7 @@ Currently runs on port 5050, but can be changed when running the server. Note if
 ## Get going
 
 1. Edit SpaceCadetPinballLeaderboard/settings.py and change the SECRET_KEY to something long and random, currently ALLOWED_HOSTS only has 127.0.0.1, but change this also if needed
-2. Run the server with `python manageserver.py runserver 127.0.0.1:5050`, then kill it with CTRL + C. This is so it makes the SWL lite file.
+2. Run the server with `python manageserver.py runserver 127.0.0.1:5050`, then kill it with CTRL + C. This is so it makes the SQL lite file.
 3. Run `python manageserver.py makemigrations`
 4. Run `python manageserver.py migrate`
 5. Run server again with `python manageserver.py runserver 127.0.0.1:5050`

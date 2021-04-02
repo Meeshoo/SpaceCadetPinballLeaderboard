@@ -45,3 +45,15 @@ body {
 .entry {
   font-family: 'Lato', sans-serif;
 }
+
+a:link, a:visited {
+  color: white;
+  font-family: 'Righteous', cursive;
+  font-size: 24px;
+}
+
+.link {
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 40px;
+}

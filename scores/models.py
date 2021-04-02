@@ -5,21 +5,21 @@ class scores(models.Model):
     playerid = models.IntegerField(default=None, blank=True, null=True)
     name = models.TextField(max_length=30)
     score = models.IntegerField()
+	
 
-    def getPlayerID(nameToGet):
+    # def getPlayerID(nameToGet):
         
-        # Get objects with name and put into list
-        scoresForPlayer = list(scores.objects.filter(name = nameToGet))
+    #     # Get objects with name and put into list
+    #     scoresForPlayer = list(scores.objects.filter(name = nameToGet))
 
-        # take one (first I guess)
-        item = scoresForPlayer[0]
+    #     # take one (first I guess)
+    #     item = scoresForPlayer[0]
 
-        # Get ID associated with name
-        playerID = item.playerid
+    #     # Get ID associated with name
+    #     playerID = item.playerid
 
-        #return ID
-        return playerID
-
+    #     #return ID
+	
     # NOT FINISHED YET
     def setPlayerID(playerName):
 
@@ -135,9 +135,9 @@ class scores(models.Model):
             score9 =retrievedScores[8]
             name10 = retrievedNames[9]
             score10 = retrievedScores[9]
+			
 
             return name1,score1,name2,score2,name3,score3,name4,score4,name5,score5,name6,score6,name7,score7,name8,score8,name9,score9,name10,score10
 
         else:
-            print ("ERROR BRO: NO SCORES IN DB")
-            return "Noscores"
+            return "Not enough scores in DB"

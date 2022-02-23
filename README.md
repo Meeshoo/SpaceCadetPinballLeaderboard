@@ -1,4 +1,4 @@
-# SpaceCadetPinballLeaderboard
+# SpaceCadetPinballLeaderboard (Local SQLITE version)
 A Django thing that displays 3D Space Cadet Pinball scores on a leaderboard, with python based client.
 
 Client files are in the Client folder, there is one that posts your scores onces and exits and one that posts them every 30 seconds (ideal to be put in a startup folder).

@@ -1,0 +1,5 @@
+asgiref
+pytz
+sqlparse
+uWSGI
+Django

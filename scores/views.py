@@ -36,8 +36,10 @@ def index(request):
 
     if request.method == 'GET':
 
-        if scores.retrieveData() != "Not enough scores in DB":
-            name1,score1,name2,score2,name3,score3,name4,score4,name5,score5,name6,score6,name7,score7,name8,score8,name9,score9,name10,score10 = scores.retrieveData()
+        data = scores.retrieveData()
+
+        if data != "Not enough scores in DB":
+            name1,score1,name2,score2,name3,score3,name4,score4,name5,score5,name6,score6,name7,score7,name8,score8,name9,score9,name10,score10 = data
 
         return TemplateResponse(request, 'index.html', {"n1":name1, "s1":score1, "n2":name2, "s2":score2, "n3":name3, "s3":score3, "n4":name4, "s4":score4, 
         "n5":name5, "s5":score5, "n6":name6, "s6":score6, "n7":name7, "s7":score7, "n8":name8, "s8":score8, "n9":name9, "s9":score9, 

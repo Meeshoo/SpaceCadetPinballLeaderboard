@@ -1,58 +1,25 @@
-from django.db import models
 import json
+import datetime
 
-class scores(models.Model):
-    playerid = models.IntegerField(default=None, blank=True, null=True)
-    name = models.TextField(max_length=30)
-    score = models.IntegerField()
-	
+from django.db import models
+from pynamodb.attributes import UnicodeAttribute, NumberAttribute
+from pynamodb.models import Model
 
-    # def getPlayerID(nameToGet):
-        
-    #     # Get objects with name and put into list
-    #     scoresForPlayer = list(scores.objects.filter(name = nameToGet))
 
-    #     # take one (first I guess)
-    #     item = scoresForPlayer[0]
-
-    #     # Get ID associated with name
-    #     playerID = item.playerid
-
-    #     #return ID
-	
-    # NOT FINISHED YET
-    def setPlayerID(playerName):
-
-        if playerName == "Mitch":
-    
-            scoresForPlayer = scores.objects.filter(name = "Mitch")
-
-            for s in scoresForPlayer:
-                s.playerid = 1
-                s.save()
-
-        if playerName == "Reggo":
-    
-            scoresForPlayer = scores.objects.filter(name = "Reggo")
-
-            for s in scoresForPlayer:
-                s.playerid = 2
-                s.save()
-        
-        if playerName == "Defaultsound":
-        
-            scoresForPlayer = scores.objects.filter(name = "Defaultsound")
-
-            for s in scoresForPlayer:
-                s.playerid = 3
-                s.save()
+class scores(Model):
+    class Meta:
+        table_name = "SpaceCadetPinballLeaderboard"
+        region = "eu-west-1"
+    name = UnicodeAttribute(hash_key=True)
+    score = NumberAttribute(range_key=True)
+    date = UnicodeAttribute()
 
     def submitData(postData):
 
         def validScore(score):
             if score == -999:
                 return False
-            elif score > 9999999:
+            elif score > 999999999:
                 return False
             else:
                 return True
@@ -70,26 +37,21 @@ class scores(models.Model):
             else:
                 return False
 
-        retrievedScores = []
-        retrievedNames = []
-
-        retreivedObjects = scores.objects.all()
+        retreivedObjects = scores.scan()
         objectList = list(retreivedObjects)
-
-        for o in objectList:
-            s = o.score
-            n = o.name
-            retrievedScores.append(s)
 
         postData_dict = json.loads(postData.decode('utf-8'))
         dataList = list(postData_dict.values())
+
+        date = str(datetime.date.today()) + " " + str(datetime.datetime.now().hour) + ":" + str(datetime.datetime.now().minute)
 
         #Save 1st score to DB
         for x in range(0,10,2):
             scoreToCheck = int(dataList[int(x)+1])
             nameToCheck = dataList[int(x)]
             if validScore(scoreToCheck) and validName(nameToCheck) and noDuplicate(nameToCheck, scoreToCheck, objectList):
-                scoreEntry = scores(name=dataList[x], score=dataList[x+1])
+                print(dataList[x], dataList[x+1], date)
+                scoreEntry = scores(name=dataList[x], score=dataList[x+1], date=date)
                 scoreEntry.save()
 
     def retrieveData():
@@ -101,7 +63,7 @@ class scores(models.Model):
             return obj.score
 
         # Get all DB objects and sort by score
-        retreivedObjects = scores.objects.all()
+        retreivedObjects = scores.scan()
         objectList = list(retreivedObjects)
         objectList.sort(reverse = True, key = scoreSort)
 
@@ -141,3 +103,4 @@ class scores(models.Model):
 
         else:
             return "Not enough scores in DB"
+

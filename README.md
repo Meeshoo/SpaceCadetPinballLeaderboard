@@ -8,4 +8,3 @@ Client files are in the Client folder, there is one that posts your scores onces
 ### Notes
 
 - The game only stores your highscores once you close the game, so if you set a new highscore you will have to close the game for it to be posted to the server.
-- Currently the server only displays results if there are 10 scores in the database (TOFIX).

@@ -67,40 +67,13 @@ class scores(Model):
         objectList = list(retreivedObjects)
         objectList.sort(reverse = True, key = scoreSort)
 
-        # Put scores into list
-        for o in objectList:
-            n = o.name
-            s = f'{o.score:,}'
-            retrievedNames.append(n)
-            retrievedScores.append(s)
-            
-        # Return top 10
-        if len(retrievedNames) > 1:
-            name1 = retrievedNames[0]
-            score1 = retrievedScores[0]
-            name2 = retrievedNames[1]
-            score2 = retrievedScores[1]
-            name3 = retrievedNames[2]
-            score3 = retrievedScores[2]
-            name4 = retrievedNames[3]
-            score4 =retrievedScores[3]
-            name5 = retrievedNames[4]
-            score5 = retrievedScores[4]
+        objectList = objectList[:10]
 
-            name6 = retrievedNames[5]
-            score6 = retrievedScores[5]
-            name7 = retrievedNames[6]
-            score7 = retrievedScores[6]
-            name8 = retrievedNames[7]
-            score8 = retrievedScores[7]
-            name9 = retrievedNames[8]
-            score9 =retrievedScores[8]
-            name10 = retrievedNames[9]
-            score10 = retrievedScores[9]
-			
+        count = 1
 
-            return name1,score1,name2,score2,name3,score3,name4,score4,name5,score5,name6,score6,name7,score7,name8,score8,name9,score9,name10,score10
+        for entry in objectList:
+            entry.score = "{:,}".format(entry.score)
+            entry.rank = count
+            count += 1
 
-        else:
-            return "Not enough scores in DB"
-
+        return objectList

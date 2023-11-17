@@ -5,6 +5,8 @@ from django.template.response import TemplateResponse
 from .models import scores
 from django.views.decorators.csrf import csrf_exempt
 
+dataSent = False
+
 @csrf_exempt
 def index(request):
 
@@ -15,6 +17,7 @@ def index(request):
         return TemplateResponse(request, 'index.html', {"data":data})
 
     elif request.method == 'POST':
+
         data = request.body
 
         scores.submitData(data)
@@ -23,12 +26,6 @@ def index(request):
         dataSent = True
 
         return HttpResponse("Post")
-
-
-
-
-
-
 
         # WORKING POST
         #score.scores = request.body

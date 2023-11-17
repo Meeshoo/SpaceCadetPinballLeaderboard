@@ -1,18 +1,10 @@
 import json
 import datetime
 
-from django.db import models
-from pynamodb.attributes import UnicodeAttribute, NumberAttribute
-from pynamodb.models import Model
-
-
-class scores(Model):
-    class Meta:
-        table_name = "SpaceCadetPinballLeaderboard"
-        region = "eu-west-1"
-    name = UnicodeAttribute(hash_key=True)
-    score = NumberAttribute(range_key=True)
-    date = UnicodeAttribute()
+class scores(models.Model):
+    name = models.TextField(max_length=30)
+    score = models.IntegerField()
+    date = models.TextField(max_length=50)
 
     def submitData(postData):
 

@@ -1,9 +1,7 @@
 # SpaceCadetPinballLeaderboard
-A Django thing that displays 3D Space Cadet Pinball scores on a leaderboard, with python based client, and DynamoDB database.
+A Django thing that displays 3D Space Cadet Pinball scores on a leaderboard, with python based client.
 
 Client files are in the Client folder, there is one that posts your scores onces and exits and one that posts them every 30 seconds (ideal to be put in a startup folder).
-
-## NOTE: If you want an easy local setup use the sqlite-local branch, setup instructions are in the README
 
 ### Notes
 

@@ -1,6 +1,5 @@
 asgiref
 pytz
 sqlparse
-uWSGI
+gunicorn
 Django
-pynamodb

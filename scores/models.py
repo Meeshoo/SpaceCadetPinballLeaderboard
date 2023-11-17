@@ -1,5 +1,5 @@
-from django.db import models
 import json
+import datetime
 
 class scores(models.Model):
     name = models.TextField(max_length=30)
@@ -11,7 +11,7 @@ class scores(models.Model):
         def validScore(score):
             if score == -999:
                 return False
-            elif score > 9999999:
+            elif score > 999999999:
                 return False
             else:
                 return True
@@ -29,26 +29,21 @@ class scores(models.Model):
             else:
                 return False
 
-        retrievedScores = []
-        retrievedNames = []
-
-        retreivedObjects = scores.objects.all()
+        retreivedObjects = scores.scan()
         objectList = list(retreivedObjects)
-
-        for o in objectList:
-            s = o.score
-            n = o.name
-            retrievedScores.append(s)
 
         postData_dict = json.loads(postData.decode('utf-8'))
         dataList = list(postData_dict.values())
+
+        date = str(datetime.date.today()) + " " + str(datetime.datetime.now().hour) + ":" + str(datetime.datetime.now().minute)
 
         #Save 1st score to DB
         for x in range(0,10,2):
             scoreToCheck = int(dataList[int(x)+1])
             nameToCheck = dataList[int(x)]
             if validScore(scoreToCheck) and validName(nameToCheck) and noDuplicate(nameToCheck, scoreToCheck, objectList):
-                scoreEntry = scores(name=dataList[x], score=dataList[x+1])
+                print(dataList[x], dataList[x+1], date)
+                scoreEntry = scores(name=dataList[x], score=dataList[x+1], date=date)
                 scoreEntry.save()
 
     def retrieveData():
@@ -60,7 +55,7 @@ class scores(models.Model):
             return obj.score
 
         # Get all DB objects and sort by score
-        retreivedObjects = scores.objects.all()
+        retreivedObjects = scores.scan()
         objectList = list(retreivedObjects)
         objectList.sort(reverse = True, key = scoreSort)
 
@@ -74,4 +69,3 @@ class scores(models.Model):
             count += 1
 
         return objectList
-        

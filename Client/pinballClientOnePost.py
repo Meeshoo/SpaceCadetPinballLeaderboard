@@ -8,7 +8,7 @@ import sys
 
 scoresDict = {}
 
-enpoint = "http://127.0.0.1:5050/"
+enpoint = "https://pinball.etrash.pro/"
 
 def getName(position):
     key = OpenKey(HKEY_CURRENT_USER, r'SOFTWARE\Microsoft\Plus!\Pinball\SpaceCadet', 0, KEY_ALL_ACCESS)

@@ -31,117 +31,19 @@
                 Score
             </div>
         </div>
+        {% for item in data %}
         <div class="row">
             <div class="entry">
-                1
+                {{ item.rank }}
             </div>
             <div class="entry">
-                <span title={{mName}}>{{n1}}</span>
+                <span>{{ item.name }}</span>
             </div>
             <div class="entry">
-                {{s1}}
+                {{ item.score }}
             </div>
         </div>
-        <div class="row">
-            <div class="entry">
-                2
-            </div>
-            <div class="entry">
-                {{n2}}
-            </div>
-            <div class="entry">
-                {{s2}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                3
-            </div>
-            <div class="entry">
-                {{n3}}
-            </div>
-            <div class="entry">
-                {{s3}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                4
-            </div>
-            <div class="entry">
-                {{n4}}
-            </div>
-            <div class="entry">
-                {{s4}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                5
-            </div>
-            <div class="entry">
-                {{n5}}
-            </div>
-            <div class="entry">
-                {{s5}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                6
-            </div>
-            <div class="entry">
-                {{n6}}
-            </div>
-            <div class="entry">
-                {{s6}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                7
-            </div>
-            <div class="entry">
-                {{n7}}
-            </div>
-            <div class="entry">
-                {{s7}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                8
-            </div>
-            <div class="entry">
-                {{n8}}
-            </div>
-            <div class="entry">
-                {{s8}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                9
-            </div>
-            <div class="entry">
-                {{n9}}
-            </div>
-            <div class="entry">
-                {{s9}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="entry">
-                10
-            </div>
-            <div class="entry">
-                {{n10}}
-            </div>
-            <div class="entry">
-                {{s10}}
-            </div>
-        </div>
-        </div>
+        {% endfor %}
     </div>
     <div class="link" target="_blank">
         <a href="https://github.com/Meeshoo/SpaceCadetPinballLeaderboard">

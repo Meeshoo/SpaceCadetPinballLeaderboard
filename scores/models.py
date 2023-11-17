@@ -1,5 +1,6 @@
 import json
 import datetime
+from django.db import models
 
 class scores(models.Model):
     name = models.TextField(max_length=30)
@@ -55,7 +56,7 @@ class scores(models.Model):
             return obj.score
 
         # Get all DB objects and sort by score
-        retreivedObjects = scores.scan()
+        retreivedObjects = scores.objects.all()
         objectList = list(retreivedObjects)
         objectList.sort(reverse = True, key = scoreSort)
 

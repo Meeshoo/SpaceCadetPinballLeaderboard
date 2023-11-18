@@ -8,7 +8,7 @@ source "docker" "python" {
   commit = true
   changes = [
     "ENV FOO bar",
-    "WORKDIR /spacecadetpinballleaderboard"
+    "WORKDIR /spacecadetpinballleaderboard",
     "CMD [\"gunicorn\", \"/spacecadetpinballleaderboard/SpaceCadetPinballLeaderboard/wsgy.py\", \"--bind\", \"0.0.0.0:80\"]"
   ]
 }

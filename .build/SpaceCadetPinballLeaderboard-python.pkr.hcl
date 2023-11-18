@@ -26,7 +26,7 @@ build {
   }
 
   provisioner "shell" {
-    inline = ["pip install -r requirements.txt"]
+    inline = ["pip install -r /spacecadetpinballleaderboard/requirements.txt"]
   }
 
   post-processors {

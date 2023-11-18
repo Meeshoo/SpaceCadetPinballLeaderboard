@@ -9,7 +9,7 @@ source "docker" "python" {
   changes = [
     "ENV FOO bar",
     "WORKDIR /spacecadetpinballleaderboard"
-    "CMD [\"gunicorn\", \"/spacecadetpinballleaderboard/SpaceCadetPinballLeaderboard/wsgy.py\", \"--bind\" \"0.0.0.0:80\"]"
+    "CMD [\"gunicorn\", \"/spacecadetpinballleaderboard/SpaceCadetPinballLeaderboard/wsgy.py\", \"--bind\", \"0.0.0.0:80\"]"
   ]
 }
 
